@@ -20,5 +20,38 @@ var locationListCtrl = function ($scope) {
 	};
 };
 
+var _isNumeric = function (n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
+};
 
-angular.module('loc8rApp').controller('locationListCtrl', locationListCtrl);
+//need to return a fucntion that does the processing in order ot work as a filter
+var formatDistance = function () {
+	return function (distance) {
+		var numDistance, unit;
+		if (distance && _isNumeric(distance)) {
+			if (distance > 1) {
+				numDistance = parseFloat(distance).toFixed(1);
+				unit = 'km';
+			} else {
+				numDistance = parseInt(distance * 1000,10);
+				unit = 'm';
+			}
+		return numDistance + unit;
+		} else {
+			return "?";
+		}
+	};
+};
+
+//directive to create the stars, name of function in camel case
+var ratingStars = function () {
+	return {
+		scope: {
+			thisRating : '=rating'
+		},
+		templateUrl: '/angular/rating-stars.html'
+	};
+};
+
+angular.module('loc8rApp').controller('locationListCtrl', locationListCtrl).filter('formatDistance', formatDistance)
+		.directive('ratingStars', ratingStars);
