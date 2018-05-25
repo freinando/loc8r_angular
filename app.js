@@ -7,7 +7,6 @@ require('./app_api/models/db');
 
 var routesApi = require('./app_api/routes/index');
 var routes = require('./app_server/routes/index');
-//var usersRouter = require('./app_server/routes/users');
 
 var app = express();
 

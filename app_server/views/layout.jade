@@ -19,8 +19,9 @@ html(ng-app='loc8rApp')
 						ul.nav.navbar-nav
 							li
 								a(href='/about/') About
-			.container
-				block content
+			.container 
+				div(ng-view)
+					block content
 				footer
 					.row
 						.col-xs-12
@@ -28,6 +29,11 @@ html(ng-app='loc8rApp')
 			script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.js')
 			script(src='/lib/angular-route/angular-route.min.js')
 			script(src='/app.js')
+			script(src='/home/home.controller.js')
+			script(src='/common/services/loc8rData.service.js')
+			script(src='/common/services/geolocation.service.js')
+			script(src='/common/directives/ratingStars/ratingStars.directive.js')
+			script(src='/common/filters/formatDistance.filter.js')
 			script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
 			script(src='//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
 			script(src='/javascript/validation.js')
